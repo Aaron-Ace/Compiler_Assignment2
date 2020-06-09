@@ -147,12 +147,13 @@ mdcl	:	PUB type ID LP formals RP LBP vdcls stmts RETURN exp SEMI RBP
 		  /* Write the code here! */
 		  $$ = create_stm();
 		  $$ = create_exp();
-		  $$->stm_id = sMDCLS;
+		  $$->stm_id = sMDCL;
 		  $$->exp1 = $1;
-		  $$->exp2 = $2;
-		  $$->stm1 = $3;
-		  $$->stm2 = $4;
-		  $$->stm3->exp1 = $5;
+		  strcpy($$->exp1->name, $2);
+		  $$->exp2 = $3;
+		  $$->stm1 = $4;
+		  $$->stm2 = $5;
+		  $$->stm3->exp1 = $6;
 		  
 		}
 	;
@@ -223,7 +224,7 @@ stmt	:	LBP stmts RBP
 		{ 
 		  /* Write the code here! */
 		  $$ = create_stm();
-		  $$->stm_id = sSTMTS;
+		  $$->stm_id = sSTMT;
 		  $$->stm1 = $1;
 		  $$->stm2 = $2;
 		}
@@ -399,10 +400,10 @@ exps	:	exp erest
 erest	:	COMMA exp erest
 		{ 
 		  /* Write the code here! */
-		  /* Write the code here! */
 		  $$ = create_exp();
-		  $$ ->exp_id=eEXPS;
+		  $$ ->exp_id=eREST;
 		  $$ ->exp1 = $1;
+		  $$ ->exp2 = $2;
 		}
 	|
 		{ 
