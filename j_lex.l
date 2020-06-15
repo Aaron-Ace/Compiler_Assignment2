@@ -18,7 +18,7 @@ static			{return STATIC;}
 String			{return STR;}
 void			{return VOID;}
 main			{return MAIN;}
-System”.”out"."println	{return PRINT;}
+"System.Out.println"	{return PRINT;}
 int			{return INT;}
 if			{return IF;}
 else			{return ELSE;}
